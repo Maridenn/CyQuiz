@@ -1,0 +1,27 @@
+<%- include('../partials/header', { title: 'Users' }) %>
+<h2 style="margin-bottom:1.5rem;color:#6366f1;">All Users</h2>
+<table style="width:100%;border-collapse:collapse;background:#1e293b;border-radius:12px;overflow:hidden;">
+  <thead>
+    <tr style="background:#334155;">
+      <th style="padding:.75rem 1rem;text-align:left;">ID</th>
+      <th style="padding:.75rem 1rem;text-align:left;">Username</th>
+      <th style="padding:.75rem 1rem;text-align:left;">Email</th>
+      <th style="padding:.75rem 1rem;text-align:left;">Role</th>
+      <th style="padding:.75rem 1rem;text-align:left;">Joined</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.forEach(u => { %>
+    <tr style="border-top:1px solid #334155;">
+      <td style="padding:.75rem 1rem;"><%= u.id %></td>
+      <td style="padding:.75rem 1rem;"><%= u.username %></td>
+      <td style="padding:.75rem 1rem;color:#94a3b8;"><%= u.email %></td>
+      <td style="padding:.75rem 1rem;">
+        <span style="background:<%= u.role==='admin'?'#6366f1':'#334155' %>;padding:.2rem .6rem;border-radius:4px;font-size:.8rem;"><%= u.role %></span>
+      </td>
+      <td style="padding:.75rem 1rem;color:#64748b;"><%= new Date(u.created_at).toLocaleDateString() %></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+<%- include('../partials/footer') %>
